@@ -1,6 +1,6 @@
 import { Stack, TextField, Paper, Button } from '@mui/material'
 import { Container } from '@mui/system'
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
 
 import Tracker from '@openreplay/tracker';
@@ -10,9 +10,12 @@ const tracker = new Tracker({
   ingestPoint: "https://openreplay.testdomain.com/ingest"
 });
 
-tracker.start();
 
 export default function Home() {
+
+  useEffect(() => {
+    tracker.start();
+  }, [])
 
   const nameRef = useRef(null)
   const emailRef = useRef(null)
